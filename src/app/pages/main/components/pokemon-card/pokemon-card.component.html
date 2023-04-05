@@ -1,0 +1,8 @@
+<div class="pokemon-card">
+  <div *ngIf="pokemon.name; else elseBlock" class="card-conatiner">
+    <h2>Pokemon</h2>
+  </div>
+  <ng-template #elseBlock>
+    <ngx-skeleton-loader count="1" [theme]="{height: '240px',  borderRadius: '15px'}"></ngx-skeleton-loader>
+  </ng-template>
+</div>
