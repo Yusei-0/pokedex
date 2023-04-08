@@ -14,5 +14,9 @@ export class PokemonCardComponent {
   @Input()
   pokemon: Pokemon = POKEMON_EMPTY;
 
-  elementActive = true;
+  skeletonHeight() {
+    const screenWidth = window.innerWidth;
+
+    return screenWidth < 550 ? '170px' : '260px';
+  }
 }

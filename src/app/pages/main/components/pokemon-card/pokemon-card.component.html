@@ -3,6 +3,7 @@
     <h2>Pokemon</h2>
   </div>
   <ng-template #elseBlock>
-    <ngx-skeleton-loader count="1" [theme]="{height: '240px',  borderRadius: '15px'}"></ngx-skeleton-loader>
+    <ngx-skeleton-loader count="1" [theme]="{height: skeletonHeight(),  borderRadius: '15px'}"
+      class="img-skeleton"></ngx-skeleton-loader>
   </ng-template>
 </div>

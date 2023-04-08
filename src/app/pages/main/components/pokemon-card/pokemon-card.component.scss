@@ -1,8 +1,18 @@
 .pokemon-card{
-  max-width: 220px;
-  height: 240px;
-  display: block;
-  // border: 1px solid green;
+  width: 130px;
+  height: 130px;
+  display: inline-block;
   border-radius: 15px;
-  margin: 10px;
+  margin: 5px;
+}
+
+@media (min-width: 550px) {
+  .pokemon-card{
+    width: 220px;
+    height: 240px;
+  }
+
+  // .skeleton-loader{
+  //   height: 180px;
+  // }
 }

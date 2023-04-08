@@ -3,7 +3,7 @@ export interface Pokemon {
   number: string;
   background: string;
   imageUrl: string;
-  type: string;
+  types: string[];
 }
 
 export const POKEMON_EMPTY: Pokemon = {
@@ -11,5 +11,5 @@ export const POKEMON_EMPTY: Pokemon = {
   number: '',
   background: '',
   imageUrl: '',
-  type: '',
+  types: [],
 };
