@@ -1,5 +1,7 @@
 <page-container>
   <page-title>Pokédex</page-title>
+  <text class="text">Search for a Pokémon by name or using its Nationl Pokédex number</text>
+  <searcher class="searcher"></searcher>
   <div class="pokemons-container" *ngIf="pokemons != [] ; else elseBlock">
     <div *ngFor="let pokemon of pokemons">
       <pokemon-card [pokemonPointer]="pokemon"></pokemon-card>

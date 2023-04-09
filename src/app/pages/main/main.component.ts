@@ -5,7 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PageTitle } from '@/styled-components';
+import { PageTitle, Text } from '@/styled-components';
 import { PageContainer } from '@/components/page-container/page-container.component';
 import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.component';
 import { PokemonService } from '@/services/pokemon.service';
@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ManyPokemonsDto } from '@/models/many-pokemons.dto';
 import { Pokemon, PokemonPointer } from '@/models';
 import { LoadingComponent } from '@/components/loading/loading.component';
+import { SearchComponent } from './components/search/search.component';
 
 @Component({
   selector: 'app-main',
@@ -22,9 +23,11 @@ import { LoadingComponent } from '@/components/loading/loading.component';
     CommonModule,
     HttpClientModule,
     PageTitle,
+    Text,
     PageContainer,
     PokemonCardComponent,
     LoadingComponent,
+    SearchComponent,
   ],
   providers: [PokemonService],
   templateUrl: './main.component.html',
