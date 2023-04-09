@@ -1,8 +1,6 @@
 <page-container>
   <page-title>Pokédex</page-title>
-
-  <button (click)="getPokemonData()">Get Pokemon</button>
-  <div class="pokemons-container" *ngIf="pokemonsData ; else elseBlock">
+  <div class="pokemons-container" *ngIf="pokemons != [] ; else elseBlock">
     <div *ngFor="let pokemon of pokemons">
       <pokemon-card [pokemonPointer]="pokemon"></pokemon-card>
     </div>

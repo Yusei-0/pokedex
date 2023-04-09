@@ -1,9 +1,35 @@
+@import '../../../../styles/variables.scss';
+
 .pokemon-card{
-  width: 130px;
-  height: 130px;
+  width: 140px;
+  height: 170px;
   display: inline-block;
   border-radius: 15px;
   margin: 5px;
+  background-color: rgb(227, 228, 227, 0.8);
+}
+
+.card-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  text-align: center;
+}
+
+.card-container img {
+  height: 120px;
+  width: 120px;
+}
+.card-container h2{
+  font-size: 1.8rem;
+  color: $font-title-color;
+}
+
+.card-container p {
+  font-size: 1.5rem;
+  color: font-text-color;
 }
 
 @media (min-width: 550px) {
@@ -12,7 +38,8 @@
     height: 240px;
   }
 
-  // .skeleton-loader{
-  //   height: 180px;
-  // }
+  .card-container img {
+    height: 170px;
+    width: 170px;
+  }
 }
