@@ -35,19 +35,20 @@ export class PokemonCardComponent implements OnInit, OnDestroy {
   }
 
   getPokemonData() {
-    this.pokemonSuscription = this.pokemonService
-      .getPokemon(this.pokemonPointer.name)
-      .subscribe((data) => {
-        console.log(data.name);
-        let res = data;
+    if (this.pokemonPointer)
+      this.pokemonSuscription = this.pokemonService
+        .getPokemon(this.pokemonPointer.name)
+        .subscribe((data) => {
+          // console.log(data.name);
+          let res = data;
 
-        if (data.name === this.pokemonPointer.name) {
-          this.pokemon = pokemonAdapter(res);
-          this.unsuscribe();
-        }
+          if (data.name === this.pokemonPointer.name) {
+            this.pokemon = pokemonAdapter(res);
+            this.unsuscribe();
+          }
 
-        console.log(this.pokemon);
-      });
+          // console.log(this.pokemon);
+        });
   }
 
   unsuscribe() {

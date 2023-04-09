@@ -1,12 +1,6 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PageTitle, Text } from '@/styled-components';
-import { PageContainer } from '@/components/page-container/page-container.component';
+import { PageContainer, PageTitle, Text } from '@/styled-components';
 import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.component';
 import { PokemonService } from '@/services/pokemon.service';
 import { Subscription } from 'rxjs';
@@ -15,6 +9,7 @@ import { ManyPokemonsDto } from '@/models/many-pokemons.dto';
 import { Pokemon, PokemonPointer } from '@/models';
 import { LoadingComponent } from '@/components/loading/loading.component';
 import { SearchComponent } from './components/search/search.component';
+import { pokemonAdapter } from '@/adapters/pokemon.adapter';
 
 @Component({
   selector: 'app-main',
@@ -35,8 +30,10 @@ import { SearchComponent } from './components/search/search.component';
 })
 export class MainComponent implements OnInit, OnDestroy {
   pokemonSubscription: Subscription;
+  singlePokemonSuscription: Subscription;
   pokemons: PokemonPointer[];
   actualCallApi: ManyPokemonsDto;
+  searchValue = '';
 
   constructor(private pokemonService: PokemonService) {}
 
@@ -50,6 +47,25 @@ export class MainComponent implements OnInit, OnDestroy {
 
   unsubscribe() {
     if (this.pokemonSubscription) this.pokemonSubscription.unsubscribe();
+    if (this.singlePokemonSuscription)
+      this.singlePokemonSuscription.unsubscribe();
+  }
+
+  getSinglePokemon(pokemonKey: string) {
+    console.log('single pokemon');
+
+    this.singlePokemonSuscription = this.pokemonService
+      .getPokemon(pokemonKey)
+      .subscribe((data) => {
+        let newPokemon = pokemonAdapter(data);
+        console.log(newPokemon);
+        this.pokemons = [
+          {
+            name: newPokemon.name,
+            url: '',
+          },
+        ];
+      });
   }
 
   getPokemonData() {
@@ -61,5 +77,13 @@ export class MainComponent implements OnInit, OnDestroy {
         console.log(this.pokemons);
         // setInterval(()=> console.log(this.pokemons), 2000)
       });
+  }
+
+  doSearch(value: string) {
+    console.log('do search');
+
+    if (value === '') return this.getPokemonData();
+
+    this.getSinglePokemon(value);
   }
 }
