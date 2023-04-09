@@ -6,7 +6,7 @@
   display: inline-block;
   border-radius: 15px;
   margin: 5px;
-  background-color: rgb(227, 228, 227, 0.8);
+  // background-color: #f4f8055d;
 }
 
 .card-container{
@@ -14,7 +14,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 5px;
+  padding: 8px;
   text-align: center;
 }
 
@@ -36,6 +36,7 @@
   .pokemon-card{
     width: 220px;
     height: 240px;
+    margin: 10px;
   }
 
   .card-container img {

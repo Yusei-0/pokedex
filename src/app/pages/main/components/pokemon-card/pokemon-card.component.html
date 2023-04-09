@@ -1,8 +1,9 @@
-<div class="pokemon-card">
+<div class="pokemon-card" [ngStyle]="{'background-color' : pokemon.background}">
   <div *ngIf="pokemon.name; else elseBlock" class="card-container">
     <img [src]="pokemon.imageUrl">
     <h2>{{pokemon.name | titlecase}}</h2>
     <p>{{pokemon.number}}</p>
+    <!-- <p>{{pokemon.types[0]}}</p> -->
   </div>
   <ng-template #elseBlock>
     <ngx-skeleton-loader count="1" [theme]="{height: skeletonHeight(),  borderRadius: '15px'}"
