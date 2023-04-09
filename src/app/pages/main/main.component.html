@@ -1,17 +1,13 @@
 <page-container>
   <page-title>Pokédex</page-title>
-  <div class="pokemons-container">
-    <pokemon-card></pokemon-card>
-    <pokemon-card></pokemon-card>
-    <pokemon-card></pokemon-card>
-    <pokemon-card></pokemon-card>
-    <pokemon-card></pokemon-card>
-    <pokemon-card></pokemon-card>
-    <pokemon-card></pokemon-card>
-    <pokemon-card></pokemon-card>
-    <pokemon-card></pokemon-card>
-    <p>
-      {{actualCallApi ? (actualCallApi.results | json) : "Loading..."}}
-    </p>
+
+  <button (click)="getPokemonData()">Get Pokemon</button>
+  <div class="pokemons-container" *ngIf="pokemonsData ; else elseBlock">
+    <div *ngFor="let pokemon of pokemons">
+      <pokemon-card [pokemonPointer]="pokemon"></pokemon-card>
+    </div>
   </div>
+  <ng-template #elseBlock>
+    <loading />
+  </ng-template>
 </page-container>

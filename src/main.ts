@@ -11,5 +11,5 @@ if (environment.production) {
 }
 
 bootstrapApplication(AppComponent, {
-  providers: [provideRouter(ROUTES), PokemonService],
+  providers: [provideRouter(ROUTES)],
 }).catch((err) => console.error(err));

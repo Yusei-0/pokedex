@@ -1,5 +1,8 @@
-import { Pokemon, POKEMON_EMPTY, PokemonDTO } from '@/models';
-import { filterType, pokemonColorByType, pokemonNumberByID } from '@/utilities';
+import { Pokemon, PokemonDTO } from '@/models';
+import { pokemonNumberByID } from '@/utilities/pokemon-id.utility';
+import { POKEMON_EMPTY } from '@/models/pokemon.model';
+import { filterType } from '@/utilities/filter-pokemon-type.utility';
+import { pokemonColorByType } from '@/utilities/pokemon-color.utility';
 
 export const pokemonAdapter = (dto: PokemonDTO): Pokemon => {
   let newPokemon: Pokemon = POKEMON_EMPTY;
@@ -10,5 +13,5 @@ export const pokemonAdapter = (dto: PokemonDTO): Pokemon => {
   newPokemon.types = filterType(dto.types);
   newPokemon.background = pokemonColorByType(newPokemon.types[0]);
 
-  return newPokemon;
+  return { ...newPokemon };
 };

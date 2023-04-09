@@ -1,4 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PageTitle } from '@/styled-components';
 import { PageContainer } from '@/components/page-container/page-container.component';
@@ -7,6 +12,8 @@ import { PokemonService } from '@/services/pokemon.service';
 import { Subscription } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { ManyPokemonsDto } from '@/models/many-pokemons.dto';
+import { Pokemon, PokemonPointer } from '@/models';
+import { LoadingComponent } from '@/components/loading/loading.component';
 
 @Component({
   selector: 'app-main',
@@ -17,6 +24,7 @@ import { ManyPokemonsDto } from '@/models/many-pokemons.dto';
     PageTitle,
     PageContainer,
     PokemonCardComponent,
+    LoadingComponent,
   ],
   providers: [PokemonService],
   templateUrl: './main.component.html',
@@ -24,6 +32,8 @@ import { ManyPokemonsDto } from '@/models/many-pokemons.dto';
 })
 export class MainComponent implements OnInit, OnDestroy {
   pokemonSubscription: Subscription;
+  pokemons: PokemonPointer[] = [];
+  pokemonsData: Pokemon[] = [];
   actualCallApi: ManyPokemonsDto;
 
   constructor(private pokemonService: PokemonService) {}
@@ -42,10 +52,12 @@ export class MainComponent implements OnInit, OnDestroy {
 
   getPokemonData() {
     this.pokemonSubscription = this.pokemonService
-      .getPokemonsWithParams()
+      .getPokemonsWithParams(18, 0)
       .subscribe((data) => {
         this.actualCallApi = data;
-        console.log(this.actualCallApi);
+        this.pokemons = [...this.actualCallApi.results];
+        console.log(this.pokemons);
+        // setInterval(()=> console.log(this.pokemons), 2000)
       });
   }
 }
