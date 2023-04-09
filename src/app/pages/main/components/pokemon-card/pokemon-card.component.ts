@@ -6,6 +6,7 @@ import { PokemonPointer } from '@/models';
 import { PokemonService } from '@/services/pokemon.service';
 import { Subscription } from 'rxjs';
 import { pokemonAdapter } from '@/adapters/pokemon.adapter';
+import { isMovile } from '@/utilities/is-movile.utility';
 
 @Component({
   selector: 'pokemon-card',
@@ -56,8 +57,6 @@ export class PokemonCardComponent implements OnInit, OnDestroy {
   }
 
   skeletonHeight() {
-    const screenWidth = window.innerWidth;
-
-    return screenWidth < 550 ? '170px' : '260px';
+    return isMovile() ? '170px' : '260px';
   }
 }
