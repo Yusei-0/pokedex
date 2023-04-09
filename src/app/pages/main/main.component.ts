@@ -35,8 +35,7 @@ import { SearchComponent } from './components/search/search.component';
 })
 export class MainComponent implements OnInit, OnDestroy {
   pokemonSubscription: Subscription;
-  pokemons: PokemonPointer[] = [];
-  pokemonsData: Pokemon[] = [];
+  pokemons: PokemonPointer[];
   actualCallApi: ManyPokemonsDto;
 
   constructor(private pokemonService: PokemonService) {}

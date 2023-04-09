@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'loading',
   standalone: true,
-  imports: [CommonModule, NzSpinModule],
+  imports: [CommonModule, MatProgressSpinnerModule],
   templateUrl: './loading.component.html',
   styleUrls: ['./loading.component.scss'],
 })
