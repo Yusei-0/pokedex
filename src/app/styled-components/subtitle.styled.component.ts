@@ -6,4 +6,4 @@ import { Component, OnInit } from '@angular/core';
   template: `<h2><ng-content/></h2>`,
   styleUrls: ['subtitle.scss'],
 })
-export class NameComponent {}
+export class Subtitle {}

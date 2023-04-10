@@ -1,0 +1,33 @@
+@import '../../styles/variables.scss';
+
+header{
+ display: flex;
+}
+
+a{
+  color: $font-title-color;
+}
+.img-section{
+  display: flex;
+}
+img{
+  width: 285px;
+  height: 285px;
+  margin: 0 auto;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.title-container{
+ margin-left: auto;
+ margin-right: auto;
+  text-align: center;
+}
+
+.pokemon-type{
+  font-size: 1.6rem;
+}
+
+section{
+  margin-bottom:20px;
+}

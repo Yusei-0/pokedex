@@ -8,11 +8,17 @@ import { Subscription } from 'rxjs';
 import { pokemonAdapter } from '@/adapters/pokemon.adapter';
 import { isMovile } from '@/utilities/is-movile.utility';
 import { PokemonNumberComponent } from '@/styled-components';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'pokemon-card',
   standalone: true,
-  imports: [CommonModule, NgxSkeletonLoaderModule, PokemonNumberComponent],
+  imports: [
+    CommonModule,
+    NgxSkeletonLoaderModule,
+    RouterLink,
+    PokemonNumberComponent,
+  ],
   providers: [],
   templateUrl: './pokemon-card.component.html',
   styleUrls: ['./pokemon-card.component.scss'],

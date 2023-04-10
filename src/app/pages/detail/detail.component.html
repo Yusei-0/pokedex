@@ -1,1 +1,32 @@
-<h1>{{"HOla"}}</h1>
+<page-container *ngIf="pokemon ; else elseBlock">
+  <detail-header>
+    <a routerLink="/" *ngIf="isMovileVw">
+      <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+    </a>
+    <span class="title-container">
+      <subtitle>{{pokemon.name | titlecase}}</subtitle>
+      <pokemon-number>{{pokemon.number}}</pokemon-number>
+    </span>
+  </detail-header>
+  <page-main>
+    <section class="img-section">
+      <img [src]="pokemon.imageUrl" [ngStyle]="{'background-color' : pokemon.background}">
+    </section>
+    <section class="pokemon-description">
+      <section-title>Description</section-title>
+      <text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet corrupti magni, cumque consequuntur
+        molestiae modi nisi, </text>
+    </section>
+    <section class="pokemon-types">
+      <section-title>Types</section-title>
+      <p *ngFor="let type of pokemon.types; let i = index" class="pokemon-type">
+        {{i+1}}. {{type | titlecase}}
+      </p>
+    </section>
+  </page-main>
+</page-container>
+<ng-template #elseBlock>
+  <loading></loading>
+</ng-template>

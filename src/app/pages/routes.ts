@@ -1,5 +1,4 @@
 import { Route } from '@angular/router';
-import { MainComponent } from './main/';
 
 export const ROUTES: Route[] = [
   {
@@ -15,5 +14,9 @@ export const ROUTES: Route[] = [
     path: 'detail/:id',
     loadComponent: () =>
       import('./detail').then((page) => page.DetailComponent),
+  },
+  {
+    path: '**',
+    redirectTo: 'main',
   },
 ];
