@@ -4,11 +4,12 @@ import { POKEMON_EMPTY, Pokemon } from '@/models/pokemon.model';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { PokemonPointer } from '@/models';
 import { PokemonService } from '@/services/pokemon.service';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { pokemonAdapter } from '@/adapters/pokemon.adapter';
 import { isMovile } from '@/utilities/is-movile.utility';
 import { PokemonNumberComponent } from '@/styled-components';
 import { RouterLink } from '@angular/router';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'pokemon-card',
@@ -31,8 +32,14 @@ export class PokemonCardComponent implements OnInit, OnDestroy {
   pokemon: Pokemon = POKEMON_EMPTY;
 
   pokemonSuscription: Subscription;
+  pokemonsState$: Observable<Pokemon[]>;
 
-  constructor(private pokemonService: PokemonService) {}
+  constructor(
+    private pokemonService: PokemonService,
+    private store: Store<{ pokemons: Pokemon[] }>
+  ) {
+    this.pokemonsState$ = store.select('pokemons');
+  }
 
   ngOnInit(): void {
     this.getPokemonData();

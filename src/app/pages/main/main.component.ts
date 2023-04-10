@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PageContainer, PageTitle, Text } from '@/styled-components';
 import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.component';
 import { PokemonService } from '@/services/pokemon.service';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { ManyPokemonsDto } from '@/models/many-pokemons.dto';
 import { Pokemon, PokemonPointer } from '@/models';
